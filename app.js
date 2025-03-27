@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const sequelize = require('./db');
+const User = require('./models/User');
+const Post = require('./models/Post');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,5 +40,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function setup() {
+  const rachel = await User.create({email: "racheljones@gmail.com", password: "1234", username: "rachelj3", ccNum: "1234567890", ccExDate: "03032003", ccCVV: "123"})
+  const babysitting = await Post.create({description: "I'll look after kids under 5 years old", imageURL: "baby.jpeg", title: "Rachel will babysit!", price: "14.50", location: "Redmond, WA", postingUser: "rachelj3"})
+  console.log("rachel instance created")
+  console.log("babysitting instance created")
+}
+
+sequelize.sync({ force: true }).then(()=>{
+  console.log("sequelize sync completed");
+  setup().then(()=> console.log("initial db insert complete"))
+})
 
 module.exports = app;
