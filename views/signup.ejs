@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WYN: Signup</title>
+        <link rel="stylesheet" href="stylesheets/WYN.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <container>
+            <header>
+                <div class="flex-box-row" id="header-div">
+                    <div class="flex-box-row" id="header-left">
+                        <div class="flex-item">
+                            <h2><a class="underlineLink" href="serviceListings.ejs">services</a></h2>
+                        </div>
+                        <div class="flex-item">
+                            <h2><a class="underlineLink" href="aboutUs.ejs">about</a></h2>
+                        </div>
+                    </div>
+                    <div class="flex-item" id="header-middle">
+                        <div class="flex-item">
+                            <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
+                        </div>
+                    </div>
+                    <div class="flex-item" id="header-right">
+                        <h2><a href="login.ejs">login/sign up</a></h2>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <loginBG>
+                    <loginContainer class="centering">
+                        <div style="width:628.98px"> <!--include width to make it match login-->
+                            <loginTitle>
+                                sign up
+                            </loginTitle>
+                            <form class="loginForm">
+                                
+                                <signupLabel>required</signupLabel>
+                                <label for="email">email</label>
+                                <input class="loginField" type="email" id="email" name="email">
+                                <label for="publicEmail">Allow others to see your email?</label>
+                                <input class="loginCheck" type="checkbox" id="publicEmail" name="publicEmail" value="publicEmail">
+
+                                <label for="pwd">password</label>
+                                <input class="loginField" type="password" id="pwd" name="pwd">
+                                <label for="pwd2">confirm password</label>
+                                <input class="loginField" type="password" id="pwd2" name="pwd2">
+                                
+                                <label for="displayname">display name</label>
+                                <input class="loginField" type="text" id="displayname" name="displayname">
+                                
+                                <signupLabel>credit card information</signupLabel>
+                                <div style="font-size: 16px;">(you won't be charged, we keep it on file in case of a dispute over a purchase)</div>
+                                <label for="cardno">credit card number</label>
+                                <input class="loginField" type="text" id="cardno" name="cardno">
+                                <div style="display: inline-block; width: 47%; padding-right: 32px;">
+                                    <label for="experDate">experiation date</label>
+                                    <input class="loginField" type="text" id="experDate" name="experDate">
+                                </div>
+                                <div style="display: inline-block; width: 47%;">
+                                    <label for="cvv">cvv</label>
+                                    <input class="loginField" type="password" id="cvv" name="cvv">
+                                </div>
+
+                                <signupLabel>optional info</signupLabel>
+                                <label for="description">account description</label>
+                                <textarea class="inputDescription" id="description" name="description" rows="4"></textarea>
+                                <label for="phoneNum">phone number</label>
+                                <input class="loginField" type="text" id="phoneNum" name="phoneNum">
+                                
+                                <label for="publicPhone">Allow others to see your phone?</label>
+                                <input class="loginCheck" type="checkbox" id="publicPhone" name="publicPhone" value="publicPhone">
+                                
+                                <label for="addr1">address line one</label>
+                                <input class="loginField" type="text" id="addr1" name="addr1">
+                                <label for="addr2">address line two (optional)</label>
+                                <input class="loginField" type="text" id="addr2" name="addr2">
+                                <label for="city">city</label>
+                                <input class="loginField" type="text" id="city" name="city">
+                                <label for="country">country</label>
+                                <input class="loginField" type="text" id="country" name="country">
+                                <label for="zip">zip code</label>
+                                <input class="loginField" type="text" id="zip" name="zip">
+                                <label for="publicLocation">Allow others to see your city?</label>
+                                <input class="loginCheck" type="checkbox" id="publicLocation" name="publicLocation" value="publicLocation">
+
+                                <input class="blueButton centering" style="margin-top:12px;" type="submit" value="Submit">
+                            </form>
+                            <div class="centering">Already have an account?</div>
+                            <a class="centering loginLink" href="login.ejs">login!</a>
+                        </div>
+                    </loginContainer>
+                </loginBG>
+            </main>
+
+
+            <footer>
+                <div class="flex-box-row" id="footer-div">
+                    <div class="flex-item">
+                        <h3><a class="underlineLink" href="/">home</a></h3>
+                    </div>
+                    <div class="flex-item">
+                        <img src="images/main-logo-white.png">
+                    </div>
+                    <div class="flex-item">
+                        <h3><a class="underlineLink" href="aboutUs.ejs">about us</a></h3>
+                    </div>
+                </div>
+            </footer>
+
+        </container>
+    </body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WYN: Messaging</title>
+        <link rel="stylesheet" href="stylesheets/WYN.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body style="height:100vh;">
+        <container class="flexContainer">
+
+            <header>
+                <div class="flex-box-row" id="header-div">
+                    <div class="flex-box-row" id="header-left">
+                        <div class="flex-item">
+                            <h2><a class="underlineLink" href="serviceListings.ejs">services</a></h2>
+                        </div>
+                        <div class="flex-item">
+                            <h2><a class="underlineLink" href="aboutUs.ejs">about</a></h2>
+                        </div>
+                    </div>
+                    <div class="flex-item" id="header-middle">
+                        <div class="flex-item">
+                            <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
+                        </div>
+                    </div>
+                    <div class="flex-item" id="header-right">
+                        <h2><a href="login.ejs">login/sign up</a></h2>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="messageContainer">
+
+
+                    <div class="peopleList">
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/profileImg1.jpg">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    David
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    Thanks, looking forward to it!
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/blank-profile-picture.png">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    John
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    How much?
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/profileImg1.jpg">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Rachel's Moving Company
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    For something like that, the usual price is $1,000
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/blank-profile-picture.png">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Slen D. Mann
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    Find my pages
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/blank-profile-picture.png">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Artistry Central
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    Filler data
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/Landscaper.jpg">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Weed Wackers
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    This is an extremely long message that gets cut off due to being too long. If it's too long, it'll get truncated and end with an elipse. Just a really, really long message that will get cut off even if this is on a really big screen.
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/profileImg1.jpg">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    David2
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    Lorem ipsum
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/blank-profile-picture.png">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Rock-a-Bye Babysitting
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    Alright, I'll be there at 10am tomorrow!
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                        <peopleProfile>
+                            <div style="display: inline-block;">
+                                <img class="peopleProfileImg" src="images/blank-profile-picture.png">
+                            </div>
+                            <peopleProfileTextContainer>
+                                <peopleProfileName>
+                                    Entertainment Soul
+                                </peopleProfileName>
+                                <peopleProfileLastMessage>
+                                    haha
+                                </peopleProfileLastMessage>
+                            </peopleProfileTextContainer>
+                        </peopleProfile>
+                    </div>
+
+
+
+                    <div style="height:100%; display:inline-block; width:60%">
+                    <div class = "messageMenuContainer">
+                        <messageHeader>
+                            <div style="margin: auto; height: 100%; width: fit-content;">
+                                <div style="display: inline-block;">
+                                    <img class="peopleProfileImg" src="images/profileImg1.jpg">
+                                </div>
+                                <messageHeaderName>
+                                    Rachel's Moving Company
+                                </messageHeaderName>
+                            </div>
+                        </messageHeader>
+
+                        <div class="messageMenu"> <!-- messages are in reverse order, so we can flex-reverse and start the scroll at the bottom -->
+                            <messageBubble class="msgFromOther">
+                                For something like that, the usual price is $1,000
+                            </messageBubble>
+                            <messageBubble class="msgFromOther">
+                                We can take the weight as we're moving, but if it's less than 500 pounds...
+                            </messageBubble>
+                            <messageBubble class="msgFromUser">
+                                I'm not sure on the total weight, the dresser is 200lbs, the table and desk combined are probably another is 200. Smaller things are less than 20 total.
+                            </messageBubble>
+                            <messageBubble class="msgFromUser">
+                                The distance from the house to the storage unit is 26 miles.
+                            </messageBubble>
+                            <messageBubble class="msgFromOther">
+                                It sounds like we will be able to fit everything in one load in one truck, but if we need additional trips or trucks, it'll be more.
+                            </messageBubble>
+                            <messageBubble class="msgFromOther">
+                                It would depend on the total weight, and the distance between locations.
+                            </messageBubble>
+                            <messageBubble class="msgFromUser">
+                                I'm wanting to move some of the stuff in my home to a storage unit. It's a desk, dresser, a table, and a few other smaller things. The dresser is pretty heavy, but the desk and table aren't too bad. What would be the price for something like that?
+                            </messageBubble>
+                            <messageBubble class="msgFromOther">
+                                How much are you trying to move?
+                            </messageBubble>
+                            <messageBubble class="msgFromUser">
+                                Hey, I saw your posting, what would the cost be?
+                            </messageBubble>
+                            <messageBubble class="msgFromUser">
+                                <div class="service-item flex-box-column" style="width: fit-content">
+                                    <div class="flex-item">
+                                        <img src="images/mural.jpg">
+                                    </div>
+                                    <div class="flex-item">
+                                        <h3>98161</h3>
+                                    </div>
+                                    <div class="flex-item">
+                                        <h2 class="underlineLink">Moving</h2>
+                                    </div>
+                                    <div class="flex-item">
+                                        <h3>Rachel's Moving Company</h3>
+                                    </div>
+                                </div>
+                            </messageBubble>
+                        </div>
+
+                        <form class="sendMessage">
+                            <textarea class = "sendMessageText" id="msg" name="msg" cols="40" wrap="break-word"></textarea>
+                            <input class= "sendMessageSubmit" type="image" src="images/sendIcon.png" alt="send message" id="send" name="send" value="">
+                        </form>
+
+                    </div>
+                    </div>
+
+
+            </main>
+
+            <footer>
+                <div class="flex-box-row" id="footer-div">
+                    <div class="flex-item">
+                        <h3><a class="underlineLink" href="/">home</a></h3>
+                    </div>
+                    <div class="flex-item">
+                        <img src="images/main-logo-white.png">
+                    </div>
+                    <div class="flex-item">
+                        <h3><a class="underlineLink" href="aboutUs.ejs">about us</a></h3>
+                    </div>
+                </div>
+            </footer>
+
+        </container>
+    </body>
+</html>

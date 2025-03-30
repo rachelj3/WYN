@@ -1,11 +1,100 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYN: Whatever You Need</title>
+    <link rel="stylesheet" href="stylesheets/WYN.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <script src="getData.js"></script>
+</head>
+<body onload="getServicePreviews()">
+
+    <header>
+        <div class="flex-box-row" id="header-div">
+            <div class="flex-box-row" id="header-left">
+                <div class="flex-item">
+                    <h2><a class="underlineLink" href="serviceListings.ejs">services</a></h2>
+                </div>
+                <div class="flex-item">
+                    <h2><a class="underlineLink" href="aboutUs.ejs">about</a></h2>
+                </div>
+            </div>
+            <div class="flex-item" id="header-middle">
+                <div class="flex-item">
+                    <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
+                </div>
+            </div>
+            <div class="flex-item" id="header-right">
+                <h2><a href="login.ejs">login/sign up</a></h2>
+            </div>
+        </div>
+    </header>
+
+    <div id="hero-image-section">
+        <h2>whatever <br> you need.</h2>
+        <div id="explore-button">
+            <h3><a href="serviceListings.ejs">explore services</a></h3>
+        </div>
+    </div>
+
+    <div id="explore-services" class="flex-box-row">
+        <div class="flex-box-column service-icon">
+            <div class="flex-item">
+                <h3>98053</h3>
+            </div>
+            <div class="flex-item">
+                <h2>lawn mowing</h2>
+            </div>
+            <div class="flex-item">
+                <h3>dave's mowing</h3>
+            </div>
+        </div>
+         <div class="flex-box-column service-icon">
+            <div class="flex-item">
+                <h3>98053</h3>
+            </div>
+            <div class="flex-item">
+                <h2>lawn mowing</h2>
+            </div>
+            <div class="flex-item">
+                <h3>dave's mowing</h3>
+            </div>
+        </div>
+        <div class="flex-box-column service-icon">
+            <div class="flex-item">
+                <h3>98053</h3>
+            </div>
+            <div class="flex-item">
+                <h2>lawn mowing</h2>
+            </div>
+            <div class="flex-item">
+                <h3>dave's mowing</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-us">
+        <h2>we're <br> cool people<br>(trust us)</h2>
+        <div id="about-us-button">
+            <h3><a href="aboutUs.ejs">learn about our team</a></h3>
+        </div>
+    </div>
+
+    <footer>
+        <div class="flex-box-row" id="footer-div">
+            <div class="flex-item">
+                <h3><a class="underlineLink" href="/">home</a></h3>
+            </div>
+            <div class="flex-item">
+                <img src="images/main-logo-white.png">
+            </div>
+            <div class="flex-item">
+                <h3><a class="underlineLink" href="aboutUs.ejs">about us</a></h3>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
