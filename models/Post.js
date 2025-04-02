@@ -1,5 +1,5 @@
-const sequelize = require('../db')
-const { Model, DataTypes } = require('sequelize')
+const { DataTypes, Model } = require('sequelize')
+const { post_db } = require('../db')
 
 class Post extends Model {}
 
@@ -34,7 +34,7 @@ Post.init(
   },
   {
     // Other model options go here
-    sequelize, // We need to pass the connection instance
+    sequelize: post_db, // We need to pass the connection instance
     modelName: 'Post', // We need to choose the model name
   },
 );

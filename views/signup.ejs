@@ -40,7 +40,7 @@
                             <loginTitle>
                                 sign up
                             </loginTitle>
-                            <form class="loginForm">
+                            <form action="/signup" method="POST" class="loginForm">
                                 
                                 <signupLabel>required</signupLabel>
                                 <label for="email">email</label>
@@ -91,9 +91,10 @@
                                 <label for="publicLocation">Allow others to see your city?</label>
                                 <input class="loginCheck" type="checkbox" id="publicLocation" name="publicLocation" value="publicLocation">
 
-                                <input class="blueButton centering" style="margin-top:12px;" type="submit" value="Submit">
+                                <button class="blueButton centering" style="margin-top:12px;" type="submit" value="Submit">Submit</button>
+
                             </form>
-                            <div class="centering">Already have an account?</div>
+                            <div class="centering"">Already have an account?</div>
                             <a class="centering loginLink" href="login.ejs">login!</a>
                         </div>
                     </loginContainer>

@@ -15,16 +15,16 @@
         <div class="flex-box-row" id="header-div">
             <div class="flex-box-row" id="header-left">
                 <div class="flex-item">
-                    <h2><a class="underlineLink" href="serviceListings.ejs">services</a></h2>
+                    <h2><a class="underlineLink" href="serviceListings.html">services</a></h2>
                 </div>
             </div>
             <div class="flex-item" id="header-middle">
                 <div class="flex-item">
-                    <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
+                    <a href="index.html"><img src="images/main-logo-blue.png" id="header-logo"></a>
                 </div>
             </div>
             <div class="flex-item" id="header-right">
-                <h2><a href="login.ejs">login/sign up</a></h2>
+                <h2><a href="login.html">login/sign up</a></h2>
             </div>
         </div>
     </header>
@@ -36,20 +36,38 @@
     <div class="main-container-profile">
         <div class="flex-profile-container" style="display: flex; flex-direction: row;">    
             <div class="flex-item-profile">
-                <h2><a href="editProfile.ejs" class="profile-options">Name</a>
-                    <div class="teat" style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px; margin: 0"></div>
-                </h2>
-
-
-                <h2><a href="editEmail.ejs" class="profile-options">Email</a></h2>
+                <h2><a href="editProfile.js" class="profile-options">Name</a></h2>
+                <h2><a href="editEmail.js" class="profile-options">Email</a></h2>
             </div>
-            <div class="flex-item-profile">
-                <h2><a href="editPhoneNumber.ejs" class="profile-options">Phone Number</a></h2>
-                <h2><a href="editLocation.ejs" class="profile-options">Location</a></h2>
+
+            <div class="flex-item-profile" style="padding-top: 10px">
+            <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
+            <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
             </div>
+
             <div class="flex-item-profile">
-                <h2><a class="profile-options">Offered Services</a></h2>
+                <h2><a href="editPhoneNumber.js" class="profile-options">Phone Number</a></h2>
+                <h2><a href="editLocation.js" class="profile-options">Location</a></h2>
+            </div>
+
+            <div class="flex-item-profile" style="padding-top: 10px">
+                <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
+                <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
+            </div>
+
+            <div class="flex-item-profile" id="offered-provided-container">
                 <h2><a class="profile-options">Provided Services</a></h2>
+            </div>
+            <div class="flex-item-profile" style="padding-top: 10px">
+                <div class="dropdown">
+                    <button class="dropbtn">Select Service</button>
+                    <div class="dropdown-content">
+                        <a href="#">Service 1</a>
+                        <a href="#">Service 2</a>
+                        <a href="#">Service 3</a>
+                        <a href="#">Service 4</a>
+                    </div>
+                </div>
             </div>
             </div>
         </div>
@@ -57,7 +75,7 @@
 
     <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
     margin: 20px auto; padding: 10px 20px; font-size: 16px;">
-        <h2><a href="services.ejs">Make Post</a></h2>
+        <h2><a href="makePost.html">Make Post</a></h2>
     </div>
 
 
@@ -111,13 +129,13 @@
     <footer>
         <div class="flex-box-row" id="footer-div" style="margin-top: 200px;">
             <div class="flex-item">
-                <h3><a class="underlineLink" href="/">home</a></h3>
+                <h3><a class="underlineLink" href="index.html">home</a></h3>
             </div>
             <div class="flex-item">
                 <img src="images/main-logo-white.png">
             </div>
             <div class="flex-item">
-                <h3><a class="underlineLink" href="aboutUs.ejs">about us</a></h3>
+                <h3><a class="underlineLink" href="aboutUs.html">about us</a></h3>
             </div>
         </div>
     </footer>

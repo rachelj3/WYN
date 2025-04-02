@@ -1,5 +1,10 @@
+
 var express = require('express');
 var router = express.Router();
+const User = require('../models/User');
+const sequelize = require('../db');
+const bcrypt = require('bcrypt');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,5 +20,40 @@ router.get('*.ejs', function(req, res, next) {
   console.log(req.path.split("/").at(-1));
   res.render(req.path.split("/").at(-1));
 });
+
+router.post('/login', async function(req, res, next) {
+  console.log("getting login");
+
+  const user = await User.findOne({ where: { email: req.body.email } });
+  if (!user) { //User not found
+    return res.render('login', { message: 'User not found' });
+  } 
+
+  const match = await bcrypt.compare(req.body.pwd, user.password);
+
+  if(!match) { //password is wrong
+    return res.render('login', { message: 'Password is incorrect' });
+  }
+  else { //password is correct
+    req.session.user = {
+      email: user.email,
+      username: user.displayname,
+    };
+    return res.redirect('/profile');
+  } 
+
+});
+
+
+router.get('/login', function(req, res, next) {
+  console.log("getting login");
+  res.render('login', { title: 'Express' });
+});
+
+router.get('/profile', function(req, res, next) {
+  console.log("getting profile");
+  res.render('profile', { title: 'Express' });
+});
+
 
 module.exports = router;

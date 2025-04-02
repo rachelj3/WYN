@@ -1,8 +1,16 @@
-const { Sequelize } = require('sequelize')
+const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize({
+
+const user_db = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database/users.sqlite'
+})
+
+
+
+const post_db = new Sequelize({
     dialect: 'sqlite',
     storage: './database/wyndb.sqlite'
 })
 
-module.exports = sequelize
+module.exports = { user_db, post_db };
