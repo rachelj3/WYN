@@ -37,7 +37,7 @@ router.post('/login', async function(req, res, next) {
   else { //password is correct
     req.session.user = {
       email: user.email,
-      username: user.displayname,
+      username: user.username,
     };
     return res.redirect('/profile');
   } 
@@ -52,7 +52,8 @@ router.get('/login', function(req, res, next) {
 
 router.get('/profile', function(req, res, next) {
   console.log("getting profile");
-  res.render('profile', { title: 'Express' });
+  console.log(req.session.user)
+  res.render('profile', { user: req.session.user });
 });
 
 
