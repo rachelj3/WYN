@@ -42,6 +42,10 @@
                                 login
                             </loginTitle>
                             <form class="loginForm" action="/login" method="POST">
+                                <% if (typeof message !== 'undefined') { %>
+                                    <span class = "loginWarn"><%=message %><br></span>
+                                <% } %>
+                                
                                 <label for="email">email</label>
                                 <input class="loginField" type="email" id="email" name="email">
                                 <label for="pwd">password</label>

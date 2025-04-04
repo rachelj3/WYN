@@ -44,57 +44,77 @@
                                 
                                 <signupLabel>required</signupLabel>
                                 <label for="email">email</label>
-                                <input class="loginField" type="email" id="email" name="email">
+                                <input class="loginField" type="email" id="email" name="email" value="<%= (typeof formData !== 'undefined') ? formData.email : '' %>" >
+
+                                <% if (typeof errors !== 'undefined') { %>
+                                    <span class = "loginWarn"><%=errors.email_err %><br></span>
+                                <% } %>
+
                                 <label for="publicEmail">Allow others to see your email?</label>
-                                <input class="loginCheck" type="checkbox" id="publicEmail" name="publicEmail" value="publicEmail">
+                                <% var emailChecked = (typeof formData !== 'undefined' && (typeof formData.publicEmail !== 'undefined')) ? 'checked' : '' %>
+                                <input class="loginCheck" type="checkbox" id="publicEmail" name="publicEmail" value="publicEmail" <%= emailChecked %> >
 
                                 <label for="pwd">password</label>
                                 <input class="loginField" type="password" id="pwd" name="pwd">
+                                <% if (typeof errors !== 'undefined') { %>
+                                    <span class = "loginWarn"><%=errors.pwd_err %><br></span>
+                                <% } %>
                                 <label for="pwd2">confirm password</label>
                                 <input class="loginField" type="password" id="pwd2" name="pwd2">
+                                <% if (typeof errors !== 'undefined') { %>
+                                    <span class = "loginWarn"><%=errors.pwd2_err %><br></span>
+                                <% } %>
                                 
                                 <label for="displayname">display name</label>
-                                <input class="loginField" type="text" id="displayname" name="displayname">
+                                <input class="loginField" type="text" id="displayname" name="displayname" value="<%= (typeof formData !== 'undefined') ? formData.displayname : '' %>" >
+                                <% if (typeof errors !== 'undefined') { %>
+                                    <span class = "loginWarn"><%=errors.displayname_err %><br></span>
+                                <% } %>
                                 
                                 <signupLabel>credit card information</signupLabel>
                                 <div style="font-size: 16px;">(you won't be charged, we keep it on file in case of a dispute over a purchase)</div>
                                 <label for="cardno">credit card number</label>
-                                <input class="loginField" type="text" id="cardno" name="cardno">
+                                <input class="loginField" type="text" id="cardno" name="cardno" value="<%= (typeof formData !== 'undefined') ? formData.cardno : '' %>" >
                                 <div style="display: inline-block; width: 47%; padding-right: 32px;">
                                     <label for="experDate">experiation date</label>
-                                    <input class="loginField" type="text" id="experDate" name="experDate">
+                                    <input class="loginField" type="text" id="experDate" name="experDate" value="<%= (typeof formData !== 'undefined') ? formData.experDate : '' %>" >
                                 </div>
                                 <div style="display: inline-block; width: 47%;">
                                     <label for="cvv">cvv</label>
                                     <input class="loginField" type="password" id="cvv" name="cvv">
                                 </div>
+                                <% if (typeof errors !== 'undefined') { %>
+                                    <span class = "loginWarn"><br><%=errors.creditCard_err %><br></span>
+                                <% } %>
 
                                 <signupLabel>optional info</signupLabel>
                                 <label for="description">account description</label>
-                                <textarea class="inputDescription" id="description" name="description" rows="4"></textarea>
+                                <textarea class="inputDescription" id="description" name="description" rows="4"><%= (typeof formData !== 'undefined') ? formData.description : '' %></textarea>
                                 <label for="phoneNum">phone number</label>
-                                <input class="loginField" type="text" id="phoneNum" name="phoneNum">
+                                <input class="loginField" type="text" id="phoneNum" name="phoneNum" value="<%= (typeof formData !== 'undefined') ? formData.phoneNum : '' %>" >
                                 
                                 <label for="publicPhone">Allow others to see your phone?</label>
-                                <input class="loginCheck" type="checkbox" id="publicPhone" name="publicPhone" value="publicPhone">
+                                <% var phoneChecked = (typeof formData !== 'undefined' && (typeof formData.publicPhone !== 'undefined')) ? 'checked' : '' %>
+                                <input class="loginCheck" type="checkbox" id="publicPhone" name="publicPhone" value="publicPhone" <%= phoneChecked %> >
                                 
                                 <label for="addr1">address line one</label>
-                                <input class="loginField" type="text" id="addr1" name="addr1">
+                                <input class="loginField" type="text" id="addr1" name="addr1" value="<%= (typeof formData !== 'undefined') ? formData.addr1 : '' %>" >
                                 <label for="addr2">address line two (optional)</label>
-                                <input class="loginField" type="text" id="addr2" name="addr2">
+                                <input class="loginField" type="text" id="addr2" name="addr2" value="<%= (typeof formData !== 'undefined') ? formData.addr2 : '' %>" >
                                 <label for="city">city</label>
-                                <input class="loginField" type="text" id="city" name="city">
+                                <input class="loginField" type="text" id="city" name="city" value="<%= (typeof formData !== 'undefined') ? formData.city : '' %>" >
                                 <label for="country">country</label>
-                                <input class="loginField" type="text" id="country" name="country">
+                                <input class="loginField" type="text" id="country" name="country" value="<%= (typeof formData !== 'undefined') ? formData.country : '' %>" >
                                 <label for="zip">zip code</label>
-                                <input class="loginField" type="text" id="zip" name="zip">
+                                <input class="loginField" type="text" id="zip" name="zip" value="<%= (typeof formData !== 'undefined') ? formData.zip : '' %>" >
                                 <label for="publicLocation">Allow others to see your city?</label>
-                                <input class="loginCheck" type="checkbox" id="publicLocation" name="publicLocation" value="publicLocation">
+                                <% var locationChecked = (typeof formData !== 'undefined' && (typeof formData.publicLocation !== 'undefined')) ? 'checked' : '' %>
+                                <input class="loginCheck" type="checkbox" id="publicLocation" name="publicLocation" value="publicLocation" <%= locationChecked %> >
 
                                 <button class="blueButton centering" style="margin-top:12px;" type="submit" value="Submit">Submit</button>
 
                             </form>
-                            <div class="centering"">Already have an account?</div>
+                            <div class="centering">Already have an account?</div>
                             <a class="centering loginLink" href="login.ejs">login!</a>
                         </div>
                     </loginContainer>

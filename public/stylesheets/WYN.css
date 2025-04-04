@@ -632,6 +632,11 @@ loginTitle{
     border-width:2px;
 }
 
+.loginWarn {
+	color: var(--WYNblue);
+	font-size: 14px;
+}
+
 /* sign up */
 signupLabel{
     font-size: 24px;

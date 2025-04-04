@@ -7,6 +7,7 @@ var session = require('express-session');
 const { user_db, post_db } = require('./db');
 const User = require('./models/User');
 const Post = require('./models/Post');
+const bcrypt = require('bcrypt');
 
 
 var indexRouter = require('./routes/index');
@@ -72,10 +73,11 @@ async function setup() {
     await post_db.sync({ force: true });
 
     console.log('Databases synced successfully');
+    const hashPass = await bcrypt.hash("admin1234", 10);
     const babysitting = await Post.create({description: "I'll look after kids under 5 years old", imageURL: "baby.jpeg", title: "Rachel will babysit!", price: "14.50", location: "Redmond, WA", postingUser: "rachelj3"})
     await User.create({ 
         email: "admin@gmail.com", 
-        password: "admin1234", 
+        password: hashPass, 
         username: "admin", 
         ccNum: "NULL", 
         ccExDate: "NULL", 
