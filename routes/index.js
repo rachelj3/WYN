@@ -2,14 +2,25 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/User');
-const sequelize = require('../db');
+//const sequelize = require('../db');
 const bcrypt = require('bcrypt');
-
+const Post = require('../models/Post');
+const { sequelize } = require('../models/Post');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async(req, res)=> {
   console.log("Getting index!!");
-  res.render('index', { title: 'Express' });
+  try {
+    const posts = await Post.findAll({
+      limit: 3,
+      order: sequelize.literal('RANDOM()') // Make sure 'sequelize' is properly imported
+    });
+
+    res.render('index', { posts });
+  } catch (error) {
+    console.log('Error fetching posts:', error);
+    res.status(500).send('Error occurred while fetching posts');
+  }
 });
 
 router.get('*.ejs', function(req, res, next) {

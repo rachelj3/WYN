@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WYN: title of this service</title>
-    <link rel="stylesheet" href="stylesheets/WYN.css">
+    <link rel="stylesheet" href="/stylesheets/WYN.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
@@ -15,19 +15,25 @@
         <div class="flex-box-row" id="header-div">
             <div class="flex-box-row" id="header-left">
                 <div class="flex-item">
-                    <h2><a class="underlineLink" href="serviceListings.ejs">services</a></h2>
+                    <h2><a class="underlineLink" href="/serviceListings">services</a></h2>
                 </div>
                 <div class="flex-item">
-                    <h2><a class="underlineLink" href="aboutUs.ejs">about</a></h2>
+                    <h2><a class="underlineLink" href="/aboutUs">about</a></h2>
                 </div>
             </div>
             <div class="flex-item" id="header-middle">
                 <div class="flex-item">
-                    <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
+                    <a href="/"><img src="/images/main-logo-blue.png" id="header-logo"></a>
                 </div>
             </div>
             <div class="flex-item" id="header-right">
-                <h2><a href="login.ejs">login/sign up</a></h2>
+                <% if (user) { %>
+                    <!-- User is logged in, show the profile icon -->
+                    <h2><a href="/profile">view profile</a></h2>
+                <% } else { %>
+                    <!-- User is not logged in, show the login/signup button -->
+                    <h2><a href="/login">login/signup</a></h2>
+                <% } %>
             </div>
         </div>
     </header>
@@ -35,18 +41,24 @@
         <div class="flex-box-row" id="service-details-main-content">
             <div class="flex-box-column" id="service-left">
                 <div class="flex-item">
-                    <img src="images/service-photo.jpg">
+                    <img src="<%= service.imageURL %>">
                 </div>
                 <div class="flex-item">
-                    <p>This field will list a description of the service being offered. The seller can go into detail what they do, why they do it, and why someone should book them. This description can also include certifications/experiences that the seller has that will make them a more competitive candidate for the desired service.<p>
+                    <p><%= service.description %><p>
                 </div>
             </div>
             <div class="flex-box-column" id="service-right">
                 <div class="flex-item">
-                    <h2>title of this service</h2>
+                    <h2><%= service.title %></h2>
                 </div>
                 <div class="flex-item">
-                    <h3><a class="underlineLink">service provider</a></h3>
+                    <h3><a class="underlineLink"><%= service.postingUser %></a></h3>
+                </div>
+                <div class="flex-item">
+                    <h3>Price: <%= service.price %></h3>
+                </div>
+                <div class="flex-item">
+                    <h3>Location: <%= service.location %></h3>
                 </div>
                 <div class="flex-box-row" id="star-rating">
                     <div><i class="fa-solid fa-star"></i></div>
@@ -56,7 +68,7 @@
                     <div><i class="fa-regular fa-star"></i></div>
                 </div>
                 <div class="flex-item" id="send-request-button">
-                    <h2><a>start conversation with provider</a></h2>
+                    <h2><a>start conversation with <%= service.postingUser %></a></h2>
                 </div>
             </div>
         </div>
@@ -67,10 +79,10 @@
                 <h3><a class="underlineLink" href="/">home</a></h3>
             </div>
             <div class="flex-item">
-                <img src="images/main-logo-white.png">
+                <img src="/images/main-logo-white.png">
             </div>
             <div class="flex-item">
-                <h3><a class="underlineLink" href="aboutUs.ejs">about us</a></h3>
+                <h3><a class="underlineLink" href="/aboutUs">about us</a></h3>
             </div>
         </div>
     </footer>
