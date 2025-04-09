@@ -63,9 +63,21 @@ router.post('/', async function(req, res, next) {
         username: req.body.displayname,
         ccNum: req.body.cardno,
         ccExDate: req.body.experDate,
-        ccCVV: req.body.cvv
+        ccCVV: req.body.cvv,
+
+        //optional fields
+        publicEmail: (req.body.publicEmail) ? false : true,
+        description: (req.body.description == "") ? null : req.body.description,
+        phoneNumber: (req.body.phoneNum == "") ? null : req.body.phoneNum,
+        publicPhone: (req.body.publicEmail) ? false : true,
+        addressl1: (req.body.addr1 == "") ? null : req.body.addr1,
+        addressl2: (req.body.addr2 == "") ? null : req.body.addr2,
+        city: (req.body.city == "") ? null : req.body.city,
+        country: (req.body.country == "") ? null : req.body.country,
+        zipCode: (req.body.zip == "") ? null : req.body.zip,
+        publicLocation: (req.body.publicLocation) ? false : true
       });
-      
+
       //log in as user
       req.session.sessionUser = {
         email: user.email,

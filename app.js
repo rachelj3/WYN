@@ -82,7 +82,7 @@ app.use(function(err, req, res, next) {
 //   console.log("babysitting instance created")
 // }
 
-shouldSyncDatabase = false;
+shouldSyncDatabase = true;
 
 if(shouldSyncDatabase){
   (async () => {
@@ -100,9 +100,6 @@ if(shouldSyncDatabase){
         ccExDate: "NULL", 
         ccCVV: "NULL"
       });
-
-      console.log("Admin user created");
-
       await User.create({
         id: 120,
         email: "racheljones@gmail.com", 
@@ -112,7 +109,6 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234"
       });
-
       await User.create({
         id: 110,
         email: "example@email.com", 
@@ -122,7 +118,6 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234"
       });
-
       await User.create({
         id: 121,
         email: "gregLawnMow@hotmail.com", 
@@ -132,7 +127,6 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234"
       });
-
       await User.create({
         id: 122,
         email: "cindyl@outlook.com", 
@@ -142,7 +136,6 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234"
       });
-
       await User.create({
         id: 123,
         email: "shawnT@gmail.com", 
@@ -152,36 +145,109 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234"
       });
+      await User.create({
+        email: "dannyMench@gmail.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "Danny", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+      await User.create({
+        email: "publicData@email.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "My data is public", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234",
+        description: "I've got all my information public, for the sake of illustration",
+        publicEmail: true,
+        phoneNumer: "123-123-1234",
+        publicPhone: true,
+        city: "PublicCity",
+        country: "USA",
+        publicLocation: true,
+      });
+      await User.create({
+        email: "davy@hotmail.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "Davy Jones", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234",
+        description: "I've got all my information private, for the sake of illustration",
+        phoneNumer: "123-123-1234",
+        city: "PrivateCity",
+        country: "USA",
+      });
+      await User.create({
+        id: 500,
+        email: "ChloesArtCorner@hotmail.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "Chloe's Art Corner", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234",
+        description: "Chloe's Art Corner is a small company that does comissions for portraits, murals, and ",
+        publicEmail: true,
+      });
 
-      const babysitting = await Post.create({
+      await Post.create({
         description: "I'll look after kids under 5 years old", 
         imageURL: "https://th.bing.com/th/id/R.46cd2489b02c01c47b4bfaf0eaa066e7?rik=HCuSWY9MAcXg0w&pid=ImgRaw&r=0",
         title: "Rachel will babysit!", 
         price: "14.50", 
         location: "Redmond, WA", 
-        postingUserId: 120})
-      const lawn = await Post.create({
+        postingUserId: 120
+      })
+      await Post.create({
         description: "I'll mow your lawn!",
         imageURL: "https://tse1.mm.bing.net/th/id/OIP.83GQu-t_PMbrjnkqpnKhogHaE8?rs=1&pid=ImgDetMain", 
         title: "Greg will mow your lawn!", 
         price: "25.00", 
         location: "Duval, WA", 
-        postingUserId: 121});
-      const food = await Post.create({
+        postingUserId: 121
+      });
+      await Post.create({
         description: "I'll make you traditional Chinese food",
         imageURL: "https://www.thespruceeats.com/thmb/X6mg_2VBCQQ2X8VrLcPTf8_4ce0=/2733x2050/smart/filters:no_upscale()/chinese-take-out-472927590-57d31fff3df78c5833464e7b.jpg", 
         title: "Traditional Chinese Food", 
         price: "30.00", 
         location: "Federal Way, WA", 
-        postingUserId: 122});
-      const soccer = await Post.create({
+        postingUserId: 122
+      });
+      await Post.create({
         description: "Let me help you hone your soccer skills",
         imageURL: "https://th.bing.com/th/id/R.93056d635b57e3bfcfac821c7cd48ca8?rik=D7tuifFBLJiM%2fw&pid=ImgRaw&r=0", 
         title: "Soccer Lessons", 
         price: "55.00", 
         location: "Woodinville, WA", 
-        postingUserId: 123});
-      
+        postingUserId: 123
+      });
+      await Post.create({
+        description: "I'll paint a portrait of somone! Uses a 16x20\" canvas.",
+        imageURL: "https://paintingportraittips.com/wp-content/uploads/2012/05/portrait-of-a-little-girl.jpg", 
+        title: "Portrait Painting", 
+        price: "55.00", 
+        location: "Art City, WA", 
+        postingUserId: 500
+      });
+      await Post.create({
+        description: "I'll paint a mural on one of your walls, either inside or out",
+        imageURL: "https://images.squarespace-cdn.com/content/v1/5995bf96be659416eaa8a4ad/1587444667348-0I2NE4K665YI04JXAM4T/Residential+Home+Mural+Living+Room+Wall+Painting+Muralist+Jasmin+Pannu.jpg",
+        title: "Mural Painting", 
+        price: "$40 per square foot", 
+        location: "Art City, WA", 
+        postingUserId: 500
+      });
+      await Post.create({
+        description: "I'll paint a landscape of your choice. Uses a 16x20\" canvas",
+        imageURL: "https://th.bing.com/th/id/OIP.q0QfQvMAfFj_RPS7pHauXwHaFj?w=208&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7", 
+        title: "Landscape Painting", 
+        price: "70.00", 
+        location: "Art City, WA", 
+        postingUserId: 500
+      });
 
     } catch (error) {
       console.error('Database sync error:', error);

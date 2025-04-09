@@ -57,12 +57,20 @@ User.init(
         allowNull: false,
     },
     //optional values
+    publicEmail: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+    },
     description: {
         type: DataTypes.STRING,
         allowNull: true,
     },
     phoneNumber: {
         type: DataTypes.STRING,
+        allowNull: true,
+    },
+    publicPhone: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
     },
     addressl1: {
@@ -83,6 +91,10 @@ User.init(
     },
     zipCode: {
         type: DataTypes.STRING,
+        allowNull: true,
+    },
+    publicLocation: {
+        type: DataTypes.BOOLEAN,
         allowNull: true,
     }
   }, {
