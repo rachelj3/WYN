@@ -67,9 +67,10 @@ router.post('/', async function(req, res, next) {
       });
       
       //log in as user
-      req.session.user = {
+      req.session.sessionUser = {
         email: user.email,
         username: user.displayname,
+        id: user.id,
       };
       return res.redirect('/profile/'+encodeURIComponent(user.id));
     } else {

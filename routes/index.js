@@ -46,7 +46,7 @@ router.post('/login', async function(req, res, next) {
     return res.render('login', { message: 'Password is incorrect' });
   }
   else { //password is correct
-    req.session.user = {
+    req.session.sessionUser = {
       email: user.email,
       username: user.username,
       id: user.id

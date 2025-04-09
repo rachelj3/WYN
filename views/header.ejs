@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="flex-item" id="header-right">
-            <% if (user) { %>
+            <% if (sessionUser) { %>
                 <!-- User is logged in, show the profile icon -->
-                <h2><a href="/profile/<%= encodeURIComponent(user.id) %>">view profile</a></h2>
+                <h2><a href="/profile/<%= encodeURIComponent(sessionUser.id) %>">view profile</a></h2>
             <% } else { %>
                 <!-- User is not logged in, show the login/signup button -->
                 <h2><a href="/login.ejs">login/signup</a></h2>
