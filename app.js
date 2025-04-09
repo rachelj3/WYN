@@ -233,10 +233,10 @@ if(shouldSyncDatabase){
         postingUserId: 500
       });
       await Post.create({
-        description: "I'll paint a mural on one of your walls, either inside or out",
+        description: "I'll paint a mural on one of your walls, either inside or out. $40 per square foot",
         imageURL: "https://images.squarespace-cdn.com/content/v1/5995bf96be659416eaa8a4ad/1587444667348-0I2NE4K665YI04JXAM4T/Residential+Home+Mural+Living+Room+Wall+Painting+Muralist+Jasmin+Pannu.jpg",
         title: "Mural Painting", 
-        price: "$40 per square foot", 
+        // price: "$40 per square foot", 
         location: "Art City, WA", 
         postingUserId: 500
       });
@@ -247,6 +247,13 @@ if(shouldSyncDatabase){
         price: "70.00", 
         location: "Art City, WA", 
         postingUserId: 500
+      });
+      await Post.create({
+        description: "Price is up to neogiation",
+        imageURL: "https://beautifulboundarieslawn.com/wp-content/uploads/2022/07/Hedge-Trimming-Tips-beautiful-boundaries.jpg", 
+        title: "Hedge Trimming", 
+        location: "Art City, WA", 
+        postingUserId: 123
       });
 
     } catch (error) {

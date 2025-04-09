@@ -31,7 +31,11 @@
                     <h3><a href="/profile/<%= encodeURIComponent(poster.id) %>" class="underlineLink"><%= poster.username %></a></h3>
                 </div>
                 <div class="flex-item">
-                    <h3>Price: <%= service.price %></h3>
+                    <% if(service.price) { %>
+                        <h3>Price: $<%= service.price %></h3>
+                    <% } else { %>
+                        <h3> Price: Varies, or up to negotiation</h3>
+                    <% } %>
                 </div>
                 <div class="flex-item">
                     <h3>Location: <%= service.location %></h3>

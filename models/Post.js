@@ -24,7 +24,7 @@ Post.init(
     },
     price: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: true,
     },
     location: {
         type: DataTypes.STRING,
