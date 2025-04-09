@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { post_db } = require('../db');
 const Post = require('../models/Post');
+const User = require('../models/User');
 const { sequelize } = require('../models/Post');
 
 router.get('/', async (req, res) => {
@@ -11,7 +12,8 @@ router.get('/', async (req, res) => {
         const services = await Post.findAll({
            order: sequelize.literal('RANDOM()')
         });
-        res.render('serviceListings', { services });
+        const users = await User.findAll()
+        res.render('serviceListings', { services, users});
     }
     catch (error) {
         console.log('error getting random order of services', error);

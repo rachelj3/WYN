@@ -6,8 +6,6 @@ const user_db = new Sequelize({
     storage: './database/users.sqlite'
 })
 
-
-
 const post_db = new Sequelize({
     dialect: 'sqlite',
     storage: './database/wyndb.sqlite'

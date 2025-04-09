@@ -71,7 +71,7 @@ router.post('/', async function(req, res, next) {
         email: user.email,
         username: user.displayname,
       };
-      return res.redirect('/profile');
+      return res.redirect('/profile/'+encodeURIComponent(user.id));
     } else {
       console.log(errors);
       console.log(req.body);

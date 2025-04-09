@@ -1,7 +1,11 @@
 const { DataTypes, Model } = require('sequelize')
 const { post_db } = require('../db')
+const User = require('./User');
+
 
 class Post extends Model {}
+
+// Post.belongsTo(User, 'postingUserId');
 
 Post.init(
   {
@@ -17,7 +21,6 @@ Post.init(
     title: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true,
     },
     price: {
         type: DataTypes.FLOAT,
@@ -27,9 +30,13 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    postingUser: {
-        type: DataTypes.STRING,
+    postingUserId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
+        refrences: {
+          model: User,
+          key: 'id'
+        }
     }
   },
   {

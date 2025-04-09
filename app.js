@@ -74,65 +74,121 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-async function setup() {
-  const rachel = await User.create({email: "racheljones@gmail.com", password: "1234", username: "rachelj3", ccNum: "1234567890", ccExDate: "03032003", ccCVV: "123"})
-  const babysitting = await Post.create({description: "I'll look after kids under 5 years old", imageURL: "baby.jpeg", title: "Rachel will babysit!", price: "14.50", location: "Redmond, WA", postingUser: "rachelj3"})
+// async function setup() {
+//   const rachel = await User.create({email: "racheljones@gmail.com", password: "1234", username: "rachelj3", ccNum: "1234567890", ccExDate: "03032003", ccCVV: "123"})
+//   const babysitting = await Post.create({description: "I'll look after kids under 5 years old", imageURL: "baby.jpeg", title: "Rachel will babysit!", price: "14.50", location: "Redmond, WA", postingUser: "rachelj3"})
 
-  console.log("rachel instance created")
-  console.log("babysitting instance created")
-}
+//   console.log("rachel instance created")
+//   console.log("babysitting instance created")
+// }
 
-(async () => {
-  try {
-    await user_db.sync({ force: true }); 
-    await post_db.sync({ force: true });
+shouldSyncDatabase = false;
 
-    console.log('Databases synced successfully');
-    const hashPass = await bcrypt.hash("admin1234", 10);
-    const babysitting = await Post.create({
-      description: "I'll look after kids under 5 years old", 
-      imageURL: "https://th.bing.com/th/id/R.46cd2489b02c01c47b4bfaf0eaa066e7?rik=HCuSWY9MAcXg0w&pid=ImgRaw&r=0",
-      title: "Rachel will babysit!", 
-      price: "14.50", 
-      location: "Redmond, WA", 
-      postingUser: "rachelj3"})
-    const lawn = await Post.create({
-      description: "I'll mow your lawn!",
-      imageURL: "https://tse1.mm.bing.net/th/id/OIP.83GQu-t_PMbrjnkqpnKhogHaE8?rs=1&pid=ImgDetMain", 
-      title: "Greg will mow your lawn!", 
-      price: "25.00", 
-      location: "Duval, WA", 
-      postingUser: "gregw"});
-    const food = await Post.create({
-      description: "I'll make you traditional Chinese food",
-      imageURL: "https://www.thespruceeats.com/thmb/X6mg_2VBCQQ2X8VrLcPTf8_4ce0=/2733x2050/smart/filters:no_upscale()/chinese-take-out-472927590-57d31fff3df78c5833464e7b.jpg", 
-      title: "Traditional Chinese Food", 
-      price: "30.00", 
-      location: "Federal Way, WA", 
-      postingUser: "cindyl"});
-    const soccer = await Post.create({
-      description: "Let me help you hone your soccer skills",
-      imageURL: "https://th.bing.com/th/id/R.93056d635b57e3bfcfac821c7cd48ca8?rik=D7tuifFBLJiM%2fw&pid=ImgRaw&r=0", 
-      title: "Soccer Lessons", 
-      price: "55.00", 
-      location: "Woodinville, WA", 
-      postingUser: "shawnT"});
-    await User.create({ 
+if(shouldSyncDatabase){
+  (async () => {
+    try {
+      await user_db.sync({ force: true }); 
+      await post_db.sync({ force: true });
+
+      console.log('Databases synced successfully');
+
+      await User.create({ 
         email: "admin@gmail.com", 
-        password: hashPass, 
+        password: await bcrypt.hash("admin1234", 10), 
         username: "admin", 
         ccNum: "NULL", 
         ccExDate: "NULL", 
         ccCVV: "NULL"
-    });
+      });
 
-    console.log("Admin user created");
+      console.log("Admin user created");
 
-  } catch (error) {
-    console.error('Database sync error:', error);
-  }
+      await User.create({
+        id: 120,
+        email: "racheljones@gmail.com", 
+        password: await bcrypt.hash("rachel", 10), 
+        username: "rachelj3", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+
+      await User.create({
+        id: 110,
+        email: "example@email.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "Mr. Example", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+
+      await User.create({
+        id: 121,
+        email: "gregLawnMow@hotmail.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "Greg", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+
+      await User.create({
+        id: 122,
+        email: "cindyl@outlook.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "cindyl", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+
+      await User.create({
+        id: 123,
+        email: "shawnT@gmail.com", 
+        password: await bcrypt.hash("password1", 10), 
+        username: "shawnT", 
+        ccNum: "1234567890", 
+        ccExDate: "03032003", 
+        ccCVV: "1234"
+      });
+
+      const babysitting = await Post.create({
+        description: "I'll look after kids under 5 years old", 
+        imageURL: "https://th.bing.com/th/id/R.46cd2489b02c01c47b4bfaf0eaa066e7?rik=HCuSWY9MAcXg0w&pid=ImgRaw&r=0",
+        title: "Rachel will babysit!", 
+        price: "14.50", 
+        location: "Redmond, WA", 
+        postingUserId: 120})
+      const lawn = await Post.create({
+        description: "I'll mow your lawn!",
+        imageURL: "https://tse1.mm.bing.net/th/id/OIP.83GQu-t_PMbrjnkqpnKhogHaE8?rs=1&pid=ImgDetMain", 
+        title: "Greg will mow your lawn!", 
+        price: "25.00", 
+        location: "Duval, WA", 
+        postingUserId: 121});
+      const food = await Post.create({
+        description: "I'll make you traditional Chinese food",
+        imageURL: "https://www.thespruceeats.com/thmb/X6mg_2VBCQQ2X8VrLcPTf8_4ce0=/2733x2050/smart/filters:no_upscale()/chinese-take-out-472927590-57d31fff3df78c5833464e7b.jpg", 
+        title: "Traditional Chinese Food", 
+        price: "30.00", 
+        location: "Federal Way, WA", 
+        postingUserId: 122});
+      const soccer = await Post.create({
+        description: "Let me help you hone your soccer skills",
+        imageURL: "https://th.bing.com/th/id/R.93056d635b57e3bfcfac821c7cd48ca8?rik=D7tuifFBLJiM%2fw&pid=ImgRaw&r=0", 
+        title: "Soccer Lessons", 
+        price: "55.00", 
+        location: "Woodinville, WA", 
+        postingUserId: 123});
+      
+
+    } catch (error) {
+      console.error('Database sync error:', error);
+    }
   
-})();
+  })();
+}
 
 app.get('/', async (req, res) => {
   try {

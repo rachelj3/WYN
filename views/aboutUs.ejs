@@ -12,32 +12,7 @@
 </head>
 <body>
 
-    <header style="position: sticky; top: 0; z-index: 100;">
-        <div class="flex-box-row" id="header-div">
-            <div class="flex-box-row" id="header-left">
-                <div class="flex-item">
-                    <h2><a class="underlineLink" href="/serviceListings">services</a></h2>
-                </div>
-                <div class="flex-item">
-                    <h2><a class="underlineLink" href="aboutUs.ejs">about</a></h2>
-                </div>
-            </div>
-            <div class="flex-item" id="header-middle">
-                <div class="flex-item">
-                    <a href="/"><img src="images/main-logo-blue.png" id="header-logo"></a>
-                </div>
-            </div>
-            <div class="flex-item" id="header-right">
-                <% if (user) { %>
-                    <!-- User is logged in, show the profile icon -->
-                    <h2><a href="profile.ejs">view profile</a></h2>
-                <% } else { %>
-                    <!-- User is not logged in, show the login/signup button -->
-                    <h2><a href="login.ejs">login/signup</a></h2>
-                <% } %>
-            </div>
-        </div>
-    </header>
+    <%- include("header")%>
 
     <div  id="collab-container">
 

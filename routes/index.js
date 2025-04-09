@@ -49,8 +49,10 @@ router.post('/login', async function(req, res, next) {
     req.session.user = {
       email: user.email,
       username: user.username,
+      id: user.id
     };
-    return res.redirect('/profile');
+    //once logged in, take you to profile
+    return res.redirect('/profile/'+encodeURIComponent(user.id));
   } 
 
 });
@@ -61,10 +63,16 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
-router.get('/profile', function(req, res, next) {
+router.get('/profile/:id', async function(req, res, next) {
   console.log("getting profile");
-  console.log(req.session.user)
-  res.render('profile', { user: req.session.user });
+  const { id } = req.params;
+    try {
+        const user = await User.findByPk(id);
+        res.render('profile', { user });
+    }
+    catch (error) {
+        console.log('error getting user: ', error);
+    }
 });
 
 
