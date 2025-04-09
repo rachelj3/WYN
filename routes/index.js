@@ -10,13 +10,15 @@ const { sequelize } = require('../models/Post');
 /* GET home page. */
 router.get('/', async(req, res)=> {
   console.log("Getting index!!");
+
   try {
     const posts = await Post.findAll({
       limit: 3,
       order: sequelize.literal('RANDOM()') // Make sure 'sequelize' is properly imported
     });
+    const users = await User.findAll()
 
-    res.render('index', { posts });
+    res.render('index', { posts, users });
   } catch (error) {
     console.log('Error fetching posts:', error);
     res.status(500).send('Error occurred while fetching posts');
