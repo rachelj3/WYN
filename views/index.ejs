@@ -17,21 +17,22 @@
     <div id="hero-image-section">
         <h2>whatever <br> you need.</h2>
         <div id="explore-button">
-            <h3><a href="serviceListings.ejs">explore services</a></h3>
+            <h3><a href="/serviceListings">explore services</a></h3>
         </div>
     </div>
 
     <div id="explore-services" class="flex-box-row">
         <% posts.forEach(post => { %>
+            <% poster = users.find(element => element.id === post.postingUserId); %>
             <div class="flex-box-column service-icon">
                 <div class="flex-item">
                     <h3><%= post.location %></h3>
                 </div>
                 <div class="flex-item">
-                    <h2><a href="/service/<%= encodeURIComponent(post.title) %>"><%= post.title %></a></h2>
+                    <h2><a href="/service/<%= encodeURIComponent(post.id) %>"><%= post.title %></a></h2>
                 </div>
                 <div class="flex-item">
-                    <h3><%= post.postingUser %></h3>
+                    <h3><%= poster.username %></h3>
                 </div>
             </div>
           <% }) %>
