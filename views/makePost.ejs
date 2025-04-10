@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/WYN.css">
+    <link rel="stylesheet" href="/stylesheets/WYN.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
@@ -16,12 +16,14 @@
 
     <div id="make-post-container">
         <h1><span style="color: white">Make a Post</h1>
-        <form action="makePost.js" method="post" class="make-post-row" >
-            <label for="title"><span style="padding-right: 110px">Description:</span><br>
-            <textarea type="text" id="title" name="title" style="height: 200px; width: 400px; margin-top: 30px; margin-right: 140px;"></textarea></label><br><br>
+        <form action="/createPost" method="POST" class="make-post-row" >
+            <input type="hidden" name="posterId" value="<%= sessionUser.id %>">
 
-            <label for="description">Title:<br>
-            <input type="text" id="description" name="description"><br><br>
+            <label for="description"><span style="padding-right: 110px">Description:</span><br>
+            <textarea type="text" id="description" name="description" style="height: 200px; width: 400px; margin-top: 30px; margin-right: 140px;"></textarea></label><br><br>
+
+            <label for="title">Title:<br>
+            <input type="text" id="title" name="title"><br><br>
 
             <label for="price">Price:</label><br>
             <input type="text" id="price" name="price"><br><br>
@@ -29,10 +31,14 @@
             <label for="location">Location:</label><br>
             <input type="text" id="location" name="location"><br><br>
 
-            <label for="image">Image:</label><br>
-            <input type="file" id="image" name="image"><br><br>
+            <!-- <label for="image">Image:</label><br>
+            <input type="file" id="image" name="image"><br><br> -->
+
+            <label for="imageURL">Image link:</label><br>
+            <input type="text" id="imageURL" name="imageURL"><br><br>
             
-            <input type="button" class="make-post-btn" value="Submit"  onclick="window.location.href='profile.ejs';">
+            <button class="make-post-btn" type="submit" value="Submit">Submit</button>
+            <!-- <input type="button" class="make-post-btn" type="submit" value="Submit" onclick="window.location.href='profile.ejs';">-->
         </form>
     </div>
 

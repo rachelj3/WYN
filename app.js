@@ -46,7 +46,7 @@ app.get('/aboutUs', (req, res) => {
 });
 app.use('/', indexRouter);
 app.use('/signup', usersRouter);
-app.use('/makePost', postsRouter); //change this
+app.use('/createPost', postsRouter); //change this
 app.use('/serviceListings', servicesRouter);
 app.use('/', serviceDetailsRouter);
 
@@ -82,7 +82,7 @@ app.use(function(err, req, res, next) {
 //   console.log("babysitting instance created")
 // }
 
-shouldSyncDatabase = true;
+shouldSyncDatabase = false;
 
 if(shouldSyncDatabase){
   (async () => {
