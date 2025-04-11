@@ -42,18 +42,51 @@ const { Op } = require("sequelize");
 // });
 
 router.get('/', async (req, res) => {
-    // console.log(Post);
-    try {
-        //const services = await Post.findAll();
-        const services = await Post.findAll({
-           order: sequelize.literal('RANDOM()')
+
+    const { keyword } = req.query;
+    let services;
+    const users = await User.findAll();
+
+    if(keyword) {
+        services = await Post.findAll({
+            where: {
+                [Op.or]: [
+                    {
+                        title: {
+                            [Op.like]: `%${keyword}%`
+                        }
+                    },
+                    {
+                        description: {
+                            [Op.like]: `%${keyword}%` 
+                        }
+                    }
+                ]
+            }
         });
-        const users = await User.findAll()
-        res.render('serviceListings', { services, users});
+    } else {
+        services = await Post.findAll();
     }
-    catch (error) {
-        console.log('error getting random order of services', error);
-    }
+
+    res.render('serviceListings', { services, users, keyword: keyword || '' });
 });
+
+
+
+
+
+
+    // console.log(Post);
+    //try {
+        //const services = await Post.findAll();
+        //const services = await Post.findAll({
+           //order: sequelize.literal('RANDOM()')
+        //});
+        //const users = await User.findAll()
+        //res.render('serviceListings', { services, users});
+    //}
+    //catch (error) {
+        //console.log('error getting random order of services', error);
+    //}
 
 module.exports = router;

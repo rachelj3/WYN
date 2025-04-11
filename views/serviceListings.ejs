@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #FEF5E4">
 
     <%- include("header")%>
 
@@ -27,6 +27,17 @@
             </form>
         </div> -->
     
+        <div>
+            <form method="GET" action="/serviceListings" style="margin-bottom: 1rem;">
+                <input 
+                  type="text" 
+                  name="keyword" 
+                  placeholder="Search posts..." 
+                  style="margin-top: 100px; margin-left: 638px; font-family: 'Josefin Sans', sans-serif; border-radius: 10px; padding: 10px; background-color: white; font-size: 20px"
+                />
+                <button type="submit" class="blueButton centering" style="margin-top: 25px">Search</button>
+              </form>
+        </div>
         <div class="service-array" style="padding-bottom: 100px">
             
             <% services.forEach(service => { %>
