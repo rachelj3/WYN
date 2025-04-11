@@ -4,9 +4,45 @@ const { post_db } = require('../db');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const { sequelize } = require('../models/Post');
+const { Op } = require("sequelize");
+
+// router.use('/', async (req, res) => {
+//     console.log("filtering");
+//     try {
+//         //create the query
+//         const whereArg = {}
+//         if(req.body.Search){
+//             whereArg[Op.and] = [];
+//             if(req.body.Search){
+//                 whereArg[Op.and].push({
+//                     [Op.or]: [
+//                         {
+//                             title: {
+//                                 [Op.substring]: req.body.Search
+//                             },
+//                             description: {
+//                                 [Op.substring]: req.body.Search
+//                             }
+//                         }
+//                     ]
+//                 })
+//             }
+//         }
+//         console.log(whereArg);
+
+//         const services = await Post.findAll({ where: whereArgs })
+
+//         console.log(services);
+
+//         const users = await User.findAll()
+//         return res.render('serviceListings', {services, users});
+//     } catch(error) {
+//         console.log("Failed in filtering:", error);
+//     }
+// });
 
 router.get('/', async (req, res) => {
-    console.log(Post);
+    // console.log(Post);
     try {
         //const services = await Post.findAll();
         const services = await Post.findAll({

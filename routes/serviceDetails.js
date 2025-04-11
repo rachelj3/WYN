@@ -8,10 +8,8 @@ const { sequelize } = require('../models/Post');
 router.get('/service/:id', async (req, res) => {
     const { id } = req.params;
     console.log("get service/id");
-    console.log(id);
     try {
         const service = await Post.findByPk(id);
-        console.log(service);
         const poster = await User.findByPk(service.postingUserId);
         res.render('service', { service, poster });
     }

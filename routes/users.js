@@ -18,7 +18,7 @@ router.post('/', async function(req, res, next) {
       // return res.status(400).json({status: "failed", data: [], message: 'You already have an account, please log in instead' });
     }
 
-    console.log(typeof req.body.pwd);
+    // console.log(typeof req.body.pwd);
     if(req.body.pwd.length < 8){
       errors.pwd_err = "Password must be at least 8 characters";
       errors.success = false;
@@ -86,8 +86,8 @@ router.post('/', async function(req, res, next) {
       };
       return res.redirect('/profile/'+encodeURIComponent(user.id));
     } else {
-      console.log(errors);
-      console.log(req.body);
+      // console.log(errors);
+      // console.log(req.body);
       return res.render('signup', {formData: req.body, errors: errors});
     }
     
