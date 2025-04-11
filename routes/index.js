@@ -38,6 +38,13 @@ router.post('/login', async function(req, res, next) {
   console.log("getting login");
 
   const user = await User.findOne({ where: { email: req.body.email } });
+
+  if (user.email === "admindash@gmail.com") {
+    const users = await User.findAll();
+    const services = await Post.findAll();
+    return res.render('admin', {users, services})
+  }
+
   if (!user) { //User not found
     return res.render('login', { message: 'User not found' });
   } 

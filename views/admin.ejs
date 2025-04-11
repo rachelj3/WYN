@@ -14,10 +14,10 @@
     <%- include("header")%>
 
     
-        <div class="service-array" style="padding-bottom: 100px">
-            
+        <div class="service-array">
+            <h1>All Services Posted</h1>
+            <br>
             <% services.forEach(service => { %>
-                <% poster = users.find(element => element.id === service.postingUserId); %>
                 <div class="service-item flex-box-column">
                     <div class="flex-item">
                         <img src="<%= service.imageURL %>">
@@ -29,7 +29,25 @@
                         <h2 class="underlineLink"><a href="/service/<%= encodeURIComponent(service.id) %>"><%= service.title %></a></h2>
                     </div>
                     <div class="flex-item">
-                        <h3><%= poster.username %></h3>
+                        <h3><%= service.postingUserId %></h3>
+                    </div>
+                </div>
+              <% }) %>
+        </div>
+        <div class="service-array">
+
+            <h1>All Users Registered</h1>
+            
+            <% users.forEach(user => { %>
+                <div class="service-item flex-box-column">
+                    <div class="flex-item">
+                        <h3><%= user.username %></h3>
+                    </div>
+                    <div class="flex-item">
+                        <h3><%= user.id %></h3>
+                    </div>
+                    <div class="flex-item">
+                        <h3><%= user.email %></h3>
                     </div>
                 </div>
               <% }) %>
@@ -48,10 +66,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- <script>
-        var tracker = 
-    </script> -->
-
 </body>
 </html>
