@@ -30,10 +30,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret: 'test',
+  secret: 'wsu489',
   resave: false,
-  saveUninitialized: false,
-}));
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
+
 
 app.use((req, res, next) => {
   res.locals.sessionUser = req.session.sessionUser || null;
@@ -42,20 +44,14 @@ app.use((req, res, next) => {
 
 
 app.get('/aboutUs', (req, res) => {
-  res.render('aboutUs');  // Render the aboutUs.ejs file
+  res.render('aboutUs');  
 });
 app.use('/', indexRouter);
 app.use('/signup', usersRouter);
-app.use('/createPost', postsRouter); //change this
+app.use('/createPost', postsRouter); 
 app.use('/serviceListings', servicesRouter);
 app.use('/', serviceDetailsRouter);
 
-app.use(session({
-  secret: 'wsu489',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}))
 
 
 // catch 404 and forward to error handler

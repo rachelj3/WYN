@@ -32,14 +32,10 @@
             <label for="location">Location:</label><br>
             <input type="text" id="location" name="location" value="<%= (typeof formData !== 'undefined') ? formData.location : '' %>"><br><br>
 
-            <!-- <label for="image">Image:</label><br>
-            <input type="file" id="image" name="image"><br><br> -->
-
             <label for="imageURL">Image link:</label><br>
             <input type="text" id="imageURL" name="imageURL" value="<%= (typeof formData !== 'undefined') ? formData.imageURL : '' %>"><br><br>
             
             <button class="make-post-btn" type="submit" value="Submit">Submit</button>
-            <!-- <input type="button" class="make-post-btn" type="submit" value="Submit" onclick="window.location.href='profile.ejs';">-->
         </form>
     </div>
 

@@ -13,48 +13,35 @@
 
     <%- include("header")%>
 
-    
+
     <h1><span style="color: black; text-align: center; "><%= user.username %>'s Profile</span></h1>
     <div id="default-profile"></div>
 
     <div class="main-container-profile">
         <div class="flex-profile-container" style="display: flex; flex-direction: row;">    
-            <div class="flex-item-profile">
-                <h2><a href="editProfile.js" class="profile-options">Name</a></h2>
-                <h2><a href="editEmail.js" class="profile-options">Email</a></h2>
-            </div>
 
-            <div class="flex-item-profile" style="padding-top: 10px">
-            <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
-            <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
-            </div>
+            <form id="editProfileForm" action="/profile/<%= user.id %>/edit" method="POST">
 
-            <div class="flex-item-profile">
-                <h2><a href="editPhoneNumber.js" class="profile-options">Phone Number</a></h2>
-                <h2><a href="editLocation.js" class="profile-options">Location</a></h2>
-            </div>
+                <div class="flex-item-profile">
+                <label for="username">Username:</label>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="username" name="username" value="<%= user.username %>" required>
 
-            <div class="flex-item-profile" style="padding-top: 10px">
-                <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
-                <h2><a style="display: flex; flex-direction: row; background-color: white; height: 30px; width: 150px;"></a></h2>
-            </div>
+   
+                <label for="email">Email:</label>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="email" id ="email" name="email" value="<%= user.email %>" required>
 
-            <div class="flex-item-profile" id="offered-provided-container">
-                <h2><a class="profile-options">Provided Services</a></h2>
-            </div>
-            <div class="flex-item-profile" style="padding-top: 10px">
-                <div class="dropdown">
-                    <button class="dropbtn">Select Service</button>
-                    <div class="dropdown-content">
-                        <a href="#">Service 1</a>
-                        <a href="#">Service 2</a>
-                        <a href="#">Service 3</a>
-                        <a href="#">Service 4</a>
-                    </div>
+                <label for="phoneNumber">Phone Number:</label>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="phoneNumber" name="phoneNumber" value="<%= user.phoneNumber || '' %>">
+
+                <label for="addressl1">Address:</label>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="addressl1" name="addressl1" value="<%= user.addressl1 || '' %>">
                 </div>
+
+                <button type="submit" style="justify-content: center;">Save Changes</button>
+            </form>
+
             </div>
-            </div>
-        </div>
+       
     </div>
 
     <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
@@ -65,53 +52,26 @@
 
 
     <div id="post-container">
-        <div class="post">
-            <div class="post-image"style="background-image: url('/images/Landscaper.jpg')"> 
+        <% posts.forEach(function(post){ %>
+        <div class="post profile-item" >
+            <div class="post-image"style="background-image: url('<%= post.imageURL %>')"> 
                 <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
-                </div>
-            </div>
-            <div class="post-image" style="background-image: url('/images/Landscaper.jpg');"> 
-                <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
+                    <a href="/service/<%= post.id %>"><strong><%= post.title %></strong></a>
+                    <p><%= post.description %></p>
                 </div>
             </div>
         </div>
-        <div id="post" >
-            <div class="post-image"style="background-image: url('/images/Landscaper.jpg')"> 
-                <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
-                </div>
-            </div>
-            <div class="post-image" style="background-image: url('/images/Landscaper.jpg');"> 
-                <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
-                </div>
-            </div>
-        </div>
-        <div id="post" >
-            <div class="post-image"style="background-image: url('/images/Landscaper.jpg')"> 
-                <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
-                </div>
-            </div>
-            <div class="post-image" style="background-image: url('/images/Landscaper.jpg');"> 
-                <div class="post-content">
-                    <h2>Mural Painting</h2>
-                    <p>Chloe's art corner</p>
-                </div>
-            </div>
-        </div>
+        <% }); %>
     </div>
+
+
+
+
+    
     
     <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
     margin: 20px auto; padding: 10px 20px; font-size: 16px;">
-        <h2><a href="">Logout</a></h2>
+        <h2><a href="/logout">Logout</a></h2>
     </div>
 
     <footer>

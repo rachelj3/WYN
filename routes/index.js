@@ -2,7 +2,6 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/User');
-//const sequelize = require('../db');
 const bcrypt = require('bcrypt');
 const Post = require('../models/Post');
 const { sequelize } = require('../models/Post');
@@ -14,7 +13,7 @@ router.get('/', async(req, res)=> {
   try {
     const posts = await Post.findAll({
       limit: 3,
-      order: sequelize.literal('RANDOM()') // Make sure 'sequelize' is properly imported
+      order: sequelize.literal('RANDOM()') 
     });
     const users = await User.findAll()
 
@@ -45,7 +44,7 @@ router.post('/login', async function(req, res, next) {
     return res.render('admin', {users, services})
   }
 
-  if (!user) { //User not found
+  if (!user) {
     return res.render('login', { message: 'User not found' });
   } 
 
@@ -60,7 +59,6 @@ router.post('/login', async function(req, res, next) {
       username: user.username,
       id: user.id
     };
-    //once logged in, take you to profile
     return res.redirect('/profile/'+encodeURIComponent(user.id));
   } 
 
@@ -77,12 +75,64 @@ router.get('/profile/:id', async function(req, res, next) {
   const { id } = req.params;
     try {
         const user = await User.findByPk(id);
-        res.render('profile', { user });
+        const posts = await Post.findAll({ where: { postingUserId: id } });
+        res.render('profile', { user, posts });
     }
     catch (error) {
         console.log('error getting user: ', error);
     }
 });
+
+router.get('/profile/:id/edit', async function(req, res, next) {
+  const { id } = req.params;
+
+  try{
+    const user = await User.findByPk(id);
+    if (!user) {
+      console.log("User not found");
+    }
+    res.render("editProfile", { user });
+  } catch (error) {
+    console.log("Error when getting user for edit: ", error)
+  }
+})
+
+router.post('/profile/:id/edit', async function(req, res, next) {
+  const { id } = req.params;
+  try{
+    const user = await User.findByPk(id);
+    if(!user){
+      console.log("User not found");
+    }
+    await user.update({
+      email: req.body.email,
+      username: req.body.username,
+      phoneNumber: req.body.phoneNumber,
+      addressl1: req.body.addressl1
+    });
+    
+    if (req.session.sessionUser && req.session.sessionUser.id == id) {
+      req.session.sessionUser.username = req.body.username;
+      req.session.sessionUser.email = req.body.email;
+    }
+
+    res.redirect(`/profile/${id}`);
+
+  } catch (error) {
+    console.error("Error updating user:", error);
+  }
+});
+
+router.get('/logout', function(req, res, next) {
+
+  req.session.destroy(function(error) {
+    if(error) {
+      console.log("Error destroying the session")
+    }
+    res.redirect('/')
+  });
+});
+
 
 
 module.exports = router;

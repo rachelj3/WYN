@@ -31,7 +31,7 @@ router.post('/', async function(req, res, next) {
   }
 
 
-      res.redirect('/service/' + encodeURIComponent(post.id)) //redirect to created service posting
+      res.redirect('/service/' + encodeURIComponent(post.id)) 
     });
 
 module.exports = router;
