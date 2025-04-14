@@ -24,31 +24,34 @@
 
                 <div class="flex-item-profile">
                 <label for="username">Username:</label>
-                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="username" name="username" value="<%= user.username %>" required>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="username" name="username" value="<%= user.username %>" required <% if(!sessionUser || sessionUser.id != user.id) { %> readonly <% } %> >
 
    
                 <label for="email">Email:</label>
-                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="email" id ="email" name="email" value="<%= user.email %>" required>
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="email" id ="email" name="email" value="<%= user.email %>" required <% if(!sessionUser || sessionUser.id != user.id) { %> readonly <% } %>>
 
                 <label for="phoneNumber">Phone Number:</label>
-                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="phoneNumber" name="phoneNumber" value="<%= user.phoneNumber || '' %>">
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="phoneNumber" name="phoneNumber" value="<%= user.phoneNumber || '' %>" <% if(!sessionUser || sessionUser.id != user.id) { %> readonly <% } %>>
 
                 <label for="addressl1">Address:</label>
-                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="addressl1" name="addressl1" value="<%= user.addressl1 || '' %>">
+                <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="addressl1" name="addressl1" value="<%= user.addressl1 || '' %>" <% if(!sessionUser || sessionUser.id != user.id) { %> readonly <% } %>>
                 </div>
 
-                <button type="submit" style="justify-content: center;">Save Changes</button>
+                <% if(sessionUser && sessionUser.id == user.id) { %>
+                    <button type="submit" style="justify-content: center;">Save Changes</button>
+                <% } %>
             </form>
 
             </div>
        
     </div>
 
-    <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
-    margin: 20px auto; padding: 10px 20px; font-size: 16px;">
-        <h2><a href="/makePost.ejs">Make Post</a></h2>
-    </div>
-
+    <% if(sessionUser && sessionUser.id == user.id) { %>
+        <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
+        margin: 20px auto; padding: 10px 20px; font-size: 16px;">
+            <h2><a href="/makePost.ejs">Make Post</a></h2>
+        </div>
+    <% } %>
 
 
     <div id="post-container">
@@ -67,12 +70,13 @@
 
 
 
+    <% if(sessionUser && sessionUser.id == user.id) { %>
     
-    
-    <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
-    margin: 20px auto; padding: 10px 20px; font-size: 16px;">
-        <h2><a href="/logout">Logout</a></h2>
-    </div>
+        <div class="flex-item" id="header-right" style="align-items: center; justify-content: center;
+        margin: 20px auto; padding: 10px 20px; font-size: 16px;">
+            <h2><a href="/logout">Logout</a></h2>
+        </div>
+    <% } %>
 
     <footer>
         <div class="flex-box-row" id="footer-div" style="margin-top: 200px;">
