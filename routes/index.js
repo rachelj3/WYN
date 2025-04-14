@@ -84,6 +84,7 @@ router.get('/profile/:id', async function(req, res, next) {
 });
 
 router.get('/profile/:id/edit', async function(req, res, next) {
+
   const { id } = req.params;
 
   try{
@@ -99,6 +100,9 @@ router.get('/profile/:id/edit', async function(req, res, next) {
 
 router.post('/profile/:id/edit', async function(req, res, next) {
   const { id } = req.params;
+  if (!req.session.sessionUser || req.session.sessionUser.id != req.params.id) {
+    return res.status(403).send('Forbidden');
+  }
   try{
     const user = await User.findByPk(id);
     if(!user){

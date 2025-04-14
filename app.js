@@ -7,9 +7,9 @@ var session = require('express-session');
 const { user_db, post_db } = require('./db');
 const User = require('./models/User');
 const Post = require('./models/Post');
+
 const bcrypt = require('bcrypt');
 const { sequelize } = require('./models/Post');
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -78,7 +78,7 @@ app.use(function(err, req, res, next) {
 //   console.log("babysitting instance created")
 // }
 
-shouldSyncDatabase = false;
+shouldSyncDatabase = true;
 
 if(shouldSyncDatabase){
   (async () => {
@@ -103,7 +103,8 @@ if(shouldSyncDatabase){
         username: "rachelj3", 
         ccNum: "1234567890", 
         ccExDate: "03032003", 
-        ccCVV: "1234"
+        ccCVV: "1234",
+        phoneNumber: "123-456-7890"
       });
       await User.create({
         id: 110,
@@ -130,7 +131,10 @@ if(shouldSyncDatabase){
         username: "cindyl", 
         ccNum: "1234567890", 
         ccExDate: "03032003", 
-        ccCVV: "1234"
+        ccCVV: "1234",
+        zipCode: "1234",
+        addressl1: "192 address",
+        phoneNumber: "123-123-1234"
       });
       await User.create({
         id: 123,
@@ -158,7 +162,7 @@ if(shouldSyncDatabase){
         ccCVV: "1234",
         description: "I've got all my information public, for the sake of illustration",
         publicEmail: true,
-        phoneNumer: "123-123-1234",
+        phoneNumber: "123-123-1234",
         publicPhone: true,
         city: "PublicCity",
         country: "USA",
@@ -172,9 +176,9 @@ if(shouldSyncDatabase){
         ccExDate: "03032003", 
         ccCVV: "1234",
         description: "I've got all my information private, for the sake of illustration",
-        phoneNumer: "123-123-1234",
         city: "PrivateCity",
         country: "USA",
+
       });
       await User.create({
         id: 500,

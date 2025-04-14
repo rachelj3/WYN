@@ -20,8 +20,9 @@
     <div class="main-container-profile">
         <div class="flex-profile-container" style="display: flex; flex-direction: row;">    
 
+            <% if (sessionUser && sessionUser.id == user.id) { %>
             <form id="editProfileForm" action="/profile/<%= user.id %>/edit" method="POST">
-
+                
                 <div class="flex-item-profile">
                 <label for="username">Username:</label>
                 <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="username" name="username" value="<%= user.username %>" required>
@@ -39,7 +40,22 @@
 
                 <button type="submit" style="justify-content: center;">Save Changes</button>
             </form>
-
+            <% } else { %>
+                <div class="flex-item-profile">
+                    <label for="username">Username:</label>
+                    <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="username" name="username" value="<%= user.username %>" required>
+    
+       
+                    <label for="email">Email:</label>
+                    <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="email" id ="email" name="email" value="<%= user.email %>" required>
+    
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="phoneNumber" name="phoneNumber" value="<%= user.phoneNumber || '' %>">
+    
+                    <label for="addressl1">Address:</label>
+                    <input style="margin-bottom: 15px; margin-left: 20px; margin-right: 20px" type="text" id ="addressl1" name="addressl1" value="<%= user.addressl1 || '' %>">
+                    </div>
+                <% } %>
             </div>
        
     </div>
